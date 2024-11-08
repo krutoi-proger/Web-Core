@@ -1,0 +1,27 @@
+@model CalculatorApp.Models.CalculatorModel
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Калькулятор</title>
+</head>
+<body>
+    <h1>Калькулятор</h1>
+    <form asp-action="Calculate" method="post">
+        <input type="number" asp-for="Number1" placeholder="Первое число" required />
+        <select asp-for="Operation">
+            <option value="Add">Сложить</option>
+            <option value="Subtract">Вычесть</option>
+            <option value="Multiply">Умножить</option>
+            <option value="Divide">Разделить</option>
+        </select>
+        <input type="number" asp-for="Number2" placeholder="Второе число" required />
+        <button type="submit">Вычислить</button>
+    </form>
+
+    @if (Model.Result != 0 || Model.Operation != null)
+    {
+        <h2>Результат: @Model.Result</h2>
+    }
+</body>
+</html>
